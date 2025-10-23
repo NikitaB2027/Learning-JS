@@ -34,16 +34,23 @@ for(let i=0; i<10; i++){
 }
 console.log(numbers);
 
-
-for(let j=0; j<numbers.length; j++){
+const greatest= [];
+for(let j=1; j<numbers.length; j++){
     function subtract(a,b){
         return Math.abs(a-b);
     }
     let results= subtract(numbers[j],numbers[j-1]);
-    const greatest= [results];
+    console.log(results);
+    greatest.push(results);
     greatest.sort(function(a,b){
         return a-b;
     });
-    console.log(greatest.sort())
-    //??????? I can't figure out how to get the greatest number in the array 
+    //??????? I can't figure out how to get the greatest number in the array
 }
+console.log("Elements: "+greatest);
+console.log("Greatest distance: "+greatest[8]);
+const mapArray= greatest.map(myMapFunction);
+function myMapFunction(value){
+    return value*value;
+}
+console.log("Mapped Elements: "+mapArray);
