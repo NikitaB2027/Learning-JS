@@ -33,6 +33,17 @@ for(let i=0; i<10; i++){
     numbers.push(randomNum);
 }
 console.log(numbers);
+
+
 for(let j=0; j<numbers.length; j++){
-    
+    function subtract(a,b){
+        return Math.abs(a-b);
+    }
+    let results= subtract(numbers[j],numbers[j-1]);
+    const greatest= [results];
+    greatest.sort(function(a,b){
+        return a-b;
+    });
+    console.log(greatest.sort())
+    //??????? I can't figure out how to get the greatest number in the array 
 }
