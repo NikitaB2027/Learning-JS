@@ -1,4 +1,5 @@
 console.log("I am printing");
+//Question 1
 let x =Math.floor(Math.random()*1000);
 if (x%7&&9==0){
     console.log(x);
@@ -7,17 +8,18 @@ if (x%7&&9==0){
     console.log(x);
     console.log("Failure");
 }
+//Question 2
 let t= Math.floor(Math.random()*150);
 console.log("temp="+t);
 let temp= (t<60) ? "too cold" : (t>90 ? "too hot" : "just right");
 console.log(temp);
-
+//Question 3
 function add(a,b){
     return a+b;
 }
 let result= add(Math.floor(Math.random()*10),Math.floor(Math.random()*10));
 console.log("Result= "+result);
-
+//Question 4
 let myFunction= (a,b)=> a+b;
 let arrresult= myFunction(Math.floor(Math.random()*50),Math.floor(Math.random()*50));
 console.log("ArrResult= "+arrresult);
@@ -54,3 +56,22 @@ function myMapFunction(value){
     return value*value;
 }
 console.log("Mapped Elements: "+mapArray);
+console.log("Largest number:"+mapArray[8]);
+const overHalf = mapArray.filter(myHalf);
+function myHalf(value){
+    return value > (mapArray[8]/2);
+}
+console.log("Filtered Elements: "+mapArray.filter(myHalf));
+const sum = mapArray.reduce(mySum);
+function mySum(value, total){
+    return total+value;
+}
+console.log("Sum: "+mapArray.reduce(mySum));
+console.log()
+
+let txt = "";
+const each= mapArray.forEach(myDisplay);
+function myDisplay(value) {
+  txt + value + "<br>";
+}
+console.log("Array: ["+mapArray.forEach(myDisplay)+"]");
