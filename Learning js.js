@@ -59,11 +59,11 @@ function myMapFunction(value){
 }
 console.log("Mapped Elements: "+mapArray);
 console.log("Largest number:"+mapArray[8]);
+//Question 8 part 2
 const overHalf = mapArray.filter(myHalf);
 function myHalf(value){
     return value > (mapArray[8]/2);
 }
-//Question 8 part 2
 console.log("Filtered Elements: "+mapArray.filter(myHalf));
 //Question 9
 const sum = mapArray.reduce(mySum);
@@ -115,11 +115,37 @@ class FamilyMembers {
     age(yearNow=2025){
         return yearNow-this.birth;
     }
+    printInfo(){
+        return "Name: "+this.name+", Age: "+this.age()+", Relation: "+this.relation;
+    }
 }
 
 const myMom= new FamilyMembers("Gitika", 1977, "Mother");
 const myDad= new FamilyMembers("Keshab", 1974, "Father");
 const mySister= new FamilyMembers("Namrata", 2003, "Sister");
-console.log("Her name is "+myMom.name+", she is my "+myMom.relation+", and she is "+myMom.age()+" years old.");
-console.log("Her name is "+mySister.name+", she is my "+mySister.relation+", and she is "+mySister.age()+" years old.");
-console.log("His name is "+myDad.name+", he is my "+myDad.relation+", and he is "+myDad.age()+" years old.");
+console.log(myMom.printInfo());
+console.log(myDad.printInfo());
+console.log(mySister.printInfo());
+
+//Question 12
+const myGrandma= new FamilyMembers("Aita", 1950, "Grandmother");
+const myGrandpa= new FamilyMembers("Koka", 1945, "Grandfather");
+const myAunt= new FamilyMembers("Appa", 1975, "Aunt");
+const myUncle= new FamilyMembers("Nissa", 1972, "Uncle");
+const myCousin= new FamilyMembers("Lovely", 2006, "Cousin");
+const myOtherCousin= new FamilyMembers("Sunny", 2004, "Cousin");
+const myOtherGrandma= new FamilyMembers("Anai", 1955, "Grandmother");
+const Family= [myMom, myDad, mySister, myGrandma, myGrandpa, myAunt, myUncle, myCousin, myOtherCousin, myOtherGrandma];
+
+
+const immediateFamily= Family.filter(myImmediate);
+function myImmediate(value){
+    /*if(value.relation=="Mother"||value.relation=="Father"||value.relation=="Sister"){
+        return value;
+    }*/
+    return value.relation=="Mother" || value.relation=="Father" || value.relation=="Sister";
+}
+
+
+console.log("Immediate Family Members: "+immediateFamily.printInfo);
+
