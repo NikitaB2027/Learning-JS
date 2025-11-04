@@ -140,12 +140,34 @@ const Family= [myMom, myDad, mySister, myGrandma, myGrandpa, myAunt, myUncle, my
 
 const immediateFamily= Family.filter(myImmediate);
 function myImmediate(value){
-    /*if(value.relation=="Mother"||value.relation=="Father"||value.relation=="Sister"){
-        return value;
-    }*/
-    return value.relation=="Mother" || value.relation=="Father" || value.relation=="Sister";
+    if(value.relation=="Mother"||value.relation=="Father"||value.relation=="Sister"){
+        return "Immediate Family Members:"+value;
+        //Come back to fix the Immedicate Family Members part
+    }
+    
 }
 
+const ageAdd50Years= Family.map(myAgeAdd);
+function myAgeAdd(value){
+    return value.birth-50;
+}
 
-console.log("Immediate Family Members: "+immediateFamily.printInfo);
+console.log("Birth Year With 50 More Years: "+ageAdd50Years);
 
+let newFamilyTXT = "";
+Family.forEach(myFamilyDisplay);
+function myFamilyDisplay(value, index) {
+    const birthMinus50= ageAdd50Years[index];
+    const newAge= 2025 - birthMinus50;
+    newFamilyTXT += "Name: "+value.name+ ", Age+50 Years: "+newAge+ ", Relation: "+value.relation+"; ";
+}
+console.log("For Each Family Array ["+newFamilyTXT+"]");
+
+function ascend(a,b){
+    return a-b;
+}
+for(let k=0; k<Family.length; k++){
+    let FamilySort= ascend(ageAdd50Years[k]-ageAdd50Years[k-1]);
+}
+//let FamilySort= ascend(newAge-newAge);
+console.log("Sorted Family By Age+50 Years: "+FamilySort);
