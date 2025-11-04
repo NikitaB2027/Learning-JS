@@ -163,11 +163,26 @@ function myFamilyDisplay(value, index) {
 }
 console.log("For Each Family Array ["+newFamilyTXT+"]");
 
-function ascend(a,b){
-    return a-b;
+//let FamilySort= newFamilyTXT;
+Family.sort(function (x, y) {
+    const ageX= 2025 - (x.birth - 50);
+    const ageY= 2025 - (y.birth - 50);
+  if (ageX < ageY) {
+    return -1;
+  }
+  if (ageX > ageY) {
+    return 1;
+  }
+  return 0;
+});
+
+let SortFamilyTXT = "";
+Family.forEach(mySortFamilyDisplay);
+function mySortFamilyDisplay(value) {
+    const newAge= 2025 - (value.birth - 50);
+    SortFamilyTXT += "Name: "+value.name+ ", Age+50 Years: "+newAge+ ", Relation: "+value.relation+"; ";
 }
-for(let k=0; k<Family.length; k++){
-    let FamilySort= ascend(ageAdd50Years[k]-ageAdd50Years[k-1]);
-}
+console.log("Asending Order ["+SortFamilyTXT+"]");
+
 //let FamilySort= ascend(newAge-newAge);
-console.log("Sorted Family By Age+50 Years: "+FamilySort);
+//console.log("Sorted Family By Age+50 Years: "+FamilySort);
